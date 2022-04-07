@@ -15,23 +15,25 @@ const [date, setDate] = useState(null);
 class AlertDataPanel extends Component {
 
     state = {
-        alertId: null,
+        alertData: null,
         alertType: null,
         votesTrue: null,
         votesFalse: null,
         coordinates: null,
         location: null,
         date: null,
+        customName: null
     }
 
-    updateState = (alertData) => {
+    updateState = (data) => {
         //console.log("Updating panel with ", alertData)
         this.setState({
-            alertId: alertData.id,
-            alertType: getClassName(alertData.classId),
-            coordinates: alertData.latitude + "/" + alertData.longitude,
-            //date: alertData.date.toDate().toDateString()
-            date: alertData.date.toDateString()
+            alertData: data,
+            alertType: (data.classId != 0 ? getClassName(data.classId) : data.customName),
+            coordinates: data.latitude + "/" + data.longitude,
+            //date: data.date.toDate().toDateString()
+            date: data.date.toDateString(),
+            customName: data.customName
         });
         /*
         setAlertId(alertData.alertId);
@@ -39,7 +41,7 @@ class AlertDataPanel extends Component {
         setCoordinates(alertData.latitude + "/" + alertData.longitude);
         setDate(alertData.date.toDate().toDateString());*/
         //console.log("Sending id ", alertData.id, " for votes");
-        getVotesCountForAlert(alertData.id, this.updateVotes);
+        getVotesCountForAlert(data.id, this.updateVotes);
     }
     updateLocation = (locationText) => {
         //setLocation(locationText);
@@ -87,13 +89,13 @@ class AlertDataPanel extends Component {
                                     <tr>
                                         <td>ID</td>
                                         <td id="txtAlertId">
-                                            {this.state.alertId != null ? this.state.alertId : "---"}
+                                            {this.state.alertData != null ? this.state.alertData.id : "---"}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Tipo</td>
                                         <td id="txtAlertType">
-                                            {this.state.alertType != null ? this.state.alertType : "---"}
+                                            {this.state.alertType != null ? (this.state.alertType) : "---"}
                                         </td>
                                     </tr>
                                     <tr>

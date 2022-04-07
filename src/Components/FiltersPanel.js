@@ -100,7 +100,7 @@ class FiltersPanel extends Component {
                                         </Form.Group>
                                         <Form.Group>
                                             <Row>
-                                                <Col className="text-center"><Form.Label>Start date:</Form.Label></Col>
+                                                <Col className="text-center"><Form.Label>Fecha Inicio:</Form.Label></Col>
                                                 <Col>
                                                     <input className="w-100"
                                                         ref={this.dateMinSelector}
@@ -109,7 +109,7 @@ class FiltersPanel extends Component {
                                                 </Col>
                                             </Row>
                                             <Row>
-                                                <Col className="text-center"><Form.Label>End date:</Form.Label></Col>
+                                                <Col className="text-center"><Form.Label>Fecha Final:</Form.Label></Col>
                                                 <Col>
                                                     <input className="w-100"
                                                         ref={this.dateMaxSelector}

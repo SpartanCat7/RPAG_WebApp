@@ -123,6 +123,7 @@ function App() {
                     el.setAttribute("latitude", d.latitude);
                     el.setAttribute("longitude", d.longitude);
                     el.setAttribute("geohash", d.geohash);
+                    el.setAttribute("customName", d.customName);
                     
                     el.onclick = () => {
                         //console.log('Selected: ', d);
@@ -152,7 +153,7 @@ function App() {
                             new mapboxgl.Popup({ offset: 25 }) // add popups
                                 .setHTML(
                                     '<h2 style="color: black">' +
-                                    getClassName(d.classId) +
+                                    (d.classId != 0 ? getClassName(d.classId) : d.customName) +
                                     '</h2><p style="color: black>' +
                                     //d.date.toDate().toDateString() +
                                     d.date.toDateString() +

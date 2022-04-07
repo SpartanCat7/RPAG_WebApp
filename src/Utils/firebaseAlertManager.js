@@ -21,7 +21,8 @@ export const getAllAlerts = (setCompleteList) => {
                 date: d.date.toDate(),
                 latitude: d.latitude,
                 longitude: d.longitude,
-                geohash: d.geohash
+                geohash: d.geohash,
+                customName: d.customName
             });
         });
         
@@ -56,7 +57,8 @@ export const getArchivedAlerts = (setCompleteList, completeList) => {
                     date: new Date(alert.date),
                     latitude: alert.latitude,
                     longitude: alert.longitude,
-                    geohash: alert.geohash
+                    geohash: alert.geohash,
+                    customName: d.customName
                 });
             });
 
