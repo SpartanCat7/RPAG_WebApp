@@ -1,5 +1,5 @@
 const classList = [
-    {classId: 0, name: "Custom",            icon: "alert_menu.png",     color: "rgba(95, 39, 205,1.0)"},
+    {classId: 0, name: "Custom",            icon: "custom_alert_icon_orange.png",     color: "rgba(95, 39, 205,1.0)"},
     {classId: 1, name: "Accidente",         icon: "accident.png",       color: "rgba(239, 87, 119,1.0)"},
     {classId: 2, name: "Incendio",          icon: "fire.png",           color: "rgba(87, 95, 207,1.0)"},
     {classId: 3, name: "Persona Herida",    icon: "wounded.png",        color: "rgba(75, 207, 250,1.0)"},

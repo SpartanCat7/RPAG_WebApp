@@ -89,8 +89,8 @@ function App() {
             removeAllMarkers();
             var newMarkerList = [];
             heatmapData.features = [];
-    
-            
+
+
             if (heatmapActive) {
                 currentAlertList.forEach(d => {
                     heatmapData.features.push({
@@ -111,7 +111,7 @@ function App() {
                 map.current.setLayoutProperty('alert_heat', 'visibility', 'visible');
             } else {
                 map.current.setLayoutProperty('alert_heat', 'visibility', 'none');
-    
+
                 currentAlertList.forEach(d => {
                     var el = document.createElement('div');
                     el.className = 'marker';
@@ -124,7 +124,7 @@ function App() {
                     el.setAttribute("longitude", d.longitude);
                     el.setAttribute("geohash", d.geohash);
                     el.setAttribute("customName", d.customName);
-                    
+
                     el.onclick = () => {
                         //console.log('Selected: ', d);
                         alertDataPanel.current.updateState(d);
@@ -143,10 +143,10 @@ function App() {
                                 }
                             )
                     }
-        
+
                     var bgImage = "url(assets/icons/alerts/" + getClassIcon(d.classId) + ")";
                     el.style.backgroundImage = bgImage;
-        
+
                     var newMarker = new mapboxgl.Marker(el)
                         .setLngLat([d.longitude, d.latitude])
                         .setPopup(
@@ -161,7 +161,7 @@ function App() {
                                 )
                         )
                         .addTo(map.current);
-        
+
                     newMarkerList.push(newMarker);
                 });
             }
@@ -207,28 +207,28 @@ function App() {
             <PageHeader />
             <Container>
                 <Row className="mt-3">
-                    <Col className="pl-0">
+                    <Col id="filters-panel" className="pl-0">
                         <FiltersPanel
                             listUpdaterMethod={setCurrentAlertList}
                             completeList={completeList} />
                     </Col>
-                    <Col className="pr-0">
+                    <Col id="download-panel" className="pr-0">
                         <DataDownloadPanel
                             completeList={completeList}
                             filteredList={currentAlertList} />
                     </Col>
                 </Row>
-                <Row className="mt-3">
+                <Row id="alert-data-panel" className="mt-3">
                     <AlertDataPanel ref={alertDataPanel} />
                 </Row>
-                <Row className="mt-3">
+                <Row className="mt-3" id="map-panel">
                     <Card className="w-100" text={"white"} bg={"dark"}>
                         <Card.Header>
                             <Row>
                                 <Col><h4>Mapa actual</h4></Col>
                                 <Col className="float-end" md="auto">
                                     <Button ref={heatmapSwitchButton} onClick={() => { switchHeatmap() }}>
-                                        { heatmapActive ? "Mostrar mapa de alertas" : "Mostrar mapa de calor" }
+                                        {heatmapActive ? "Mostrar mapa de alertas" : "Mostrar mapa de calor"}
                                     </Button>
                                 </Col>
                             </Row>
@@ -240,12 +240,14 @@ function App() {
                         </Card.Body>
                     </Card>
                 </Row>
-                <Row className="mt-3">
-                    <ReportsPanel /*completeList={completeList}*/ filteredList={currentAlertList} />
+                <Row id="reports-panel" className="mt-3">
+                    <ReportsPanel
+                        filteredList={currentAlertList} />
                 </Row>
             </Container>
             <Container
                 fluid className="mt-3 pt-5 pb-5"
+                bg="dark"
                 style={{ backgroundColor: "#3c40c6", color: "white" }} >
                 <Container>
                     Hi

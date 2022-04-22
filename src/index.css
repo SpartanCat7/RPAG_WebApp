@@ -43,3 +43,13 @@ code {
 body {
   background-color: #485460;
 }
+
+.rpav-logo {
+  margin-right: 20px;
+  fill: white;
+}
+
+.navbar-brand-container {
+  align-items: center;
+  display: flex;
+}
